@@ -14,3 +14,9 @@ Control the submarine in two different manners. One where you move trough cartai
 ### Day3 
 
 Solving binary reports by initially looking at the most occuring value, and later doing a filter based upon the most or least appearing value in an increasing index position.
+
+### Day4.1
+Playing bingo with a squid! 
+
+### Day4.2
+Playing bingo with a squid whilst trying to lose! 
