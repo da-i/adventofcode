@@ -1,6 +1,5 @@
-import pdb
-from types import new_class
 import numpy as np
+
 
 def read_input(file_path="input/input.txt"):
     with open(file_path, "r") as f:
@@ -14,14 +13,14 @@ def get_solution1(raw_diag):
     matrix = np.zeros((len(raw_diag), len(raw_diag[0])))
     for i, bits in enumerate(raw_diag):
         for j, bit in enumerate(bits):
-            if bit == '1':
+            if bit == "1":
                 matrix[i][j] = 1
     matrix = matrix.T
 
     gamma = ""
     epsilon = ""
     for row in matrix:
-        ratio = np.sum(row)/len(row)
+        ratio = np.sum(row) / len(row)
         if ratio > 0.5:
             gamma += "1"
             epsilon += "0"
@@ -31,7 +30,7 @@ def get_solution1(raw_diag):
     gamma_int = int(gamma, 2)
     epsilon_int = int(epsilon, 2)
     print(f"solution1: {gamma_int*epsilon_int}")
-    
+
 
 def get_rating(raw_diag, target_func):
 
@@ -58,6 +57,7 @@ def get_co2_target(ratio):
         target = "1"
     return target
 
+
 def get_oxygen_target(ratio):
     if ratio < 0.5:
         target = "0"
@@ -65,16 +65,18 @@ def get_oxygen_target(ratio):
         target = "1"
     return target
 
+
 def get_solution2(raw_diag):
     """The diff between oxygen and co2 is how we define the target number for each location in the binary num.
     We use that to pass a general function a target getter.
     """
     target_func = get_oxygen_target
     oxygen_rating = get_rating(raw_diag, target_func)
-    
+
     target_func = get_co2_target
     co2_scrub_rating = get_rating(raw_diag, target_func)
     print(f"solution2: {oxygen_rating*co2_scrub_rating}")
+
 
 def main():
     raw_diagnostics = read_input()

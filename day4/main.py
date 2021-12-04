@@ -11,7 +11,6 @@ def read_input(file_path="day4/input/input.txt"):
     return lines
 
 
-
 @dataclass
 class BingoCard:
     scorecard: np.array
@@ -55,6 +54,7 @@ def create_draws(line):
     draws = [int(x) for x in draws]
     return draws
 
+
 def create_bingo_cards(lines):
     bingo_cards = []
     current_card = []
@@ -66,8 +66,9 @@ def create_bingo_cards(lines):
             continue
         else:
             current_card.append([int(x) for x in i.split()])
-            
+
     return bingo_cards
+
 
 def main():
     input = read_input()
@@ -76,16 +77,16 @@ def main():
     # [7,4,9,5,11,17,23,2,0,14,21,24,10]
 
     cards = create_bingo_cards(input[2:])
-    
+
     win_stats = [x.get_win_statistics(draws) for x in cards]
-    # sort gives card with lowest turns required 
+    # sort gives card with lowest turns required
     win_stats.sort()
     print("solution 1:")
-    print(win_stats[0][1]*win_stats[0][2])
+    print(win_stats[0][1] * win_stats[0][2])
     # Got super lucky with choosing a deterministic approach! just pick the last item in the sorted list!
     print("solution 2:")
-    print(win_stats[-1][1]*win_stats[-1][2])
-    
+    print(win_stats[-1][1] * win_stats[-1][2])
+
 
 if __name__ == "__main__":
     main()

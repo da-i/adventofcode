@@ -29,7 +29,7 @@ def get_solution2(submarine_motions):
     for motion in submarine_motions:
         direction, value = motion.split(" ")
         value = int(value)
-        
+
         if direction == "down":
             total_motion["aim"] += value
         elif direction == "up":
