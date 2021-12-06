@@ -20,3 +20,9 @@ Playing bingo with a squid!
 
 ### Day4.2
 Playing bingo with a squid whilst trying to lose! 
+
+### Day5
+Drawing maps of thermal vents, first only straight lines followed by diagonal line. Challange was the determination of a diagonal line.
+
+### Day6
+Exponentially growing fish populations, Challange was the Big(O) of your solution. Solved using a dict with the number of fish at each position in their reproductive cycle.
