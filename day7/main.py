@@ -3,6 +3,7 @@ import statistics
 import math
 import numpy as np
 
+
 def read_input(file_path="day7/input/input.txt"):
     with open(file_path, "r") as f:
         lines = f.readlines()
@@ -17,7 +18,7 @@ def main():
     input = read_input()
     # might need to floor or ceil????
     median = round(statistics.median(input))
-    movement = [abs(median-x) for x in input]
+    movement = [abs(median - x) for x in input]
     print(sum(movement))
 
     mean = statistics.mean(input)
@@ -28,8 +29,9 @@ def main():
     # ((16-5)**2 + (16-5)) /2
     # (abs(1-5)**2 + abs(1-5)) /2
     #  looked it up before committing: triagulair numbers
-    distance = np.sum((dists ** 2 + dists)/2)
+    distance = np.sum((dists ** 2 + dists) / 2)
     print(distance)
+
 
 if __name__ == "__main__":
     main()
