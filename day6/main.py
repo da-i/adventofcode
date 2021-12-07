@@ -1,5 +1,6 @@
 from typing import Counter
 
+
 def read_input(file_path="day6/input/input.txt"):
     with open(file_path, "r") as f:
         lines = f.readlines()
