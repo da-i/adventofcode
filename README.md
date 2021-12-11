@@ -26,3 +26,6 @@ Drawing maps of thermal vents, first only straight lines followed by diagonal li
 
 ### Day6
 Exponentially growing fish populations, Challange was the Big(O) of your solution. Solved using a dict with the number of fish at each position in their reproductive cycle.
+
+### Day11
+Flashing fish, biggest hurdle was to not reset all the fish that flashed to 0.
