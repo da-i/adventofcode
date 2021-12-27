@@ -3,14 +3,14 @@ import statistics
 import math
 import numpy as np
 
-DIFF_KERNEL = np.array(
-            [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
-        )
+DIFF_KERNEL = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
 STEPS = 100
+
 
 def split(word):
     return [char for char in word]
-     
+
+
 def read_input(file_path="day11/input/input.txt"):
     with open(file_path, "r") as f:
         lines = f.readlines()
@@ -21,7 +21,7 @@ def read_input(file_path="day11/input/input.txt"):
     return array
 
 
-def update_matrix(dumbo_octo, has_flashed, coords, XMAX , YMAX):
+def update_matrix(dumbo_octo, has_flashed, coords, XMAX, YMAX):
     if has_flashed[coords[0], coords[1]] == 1:
         return dumbo_octo, has_flashed
 
@@ -59,16 +59,18 @@ def main():
         has_flashed = np.zeros(dumbo_octo.shape)
         while len(lights[0]) > 0:
             for light in zip(lights[0], lights[1]):
-                dumbo_octo, has_flashed = update_matrix(dumbo_octo, has_flashed, light, 10, 10) #TODO update shape                
+                dumbo_octo, has_flashed = update_matrix(
+                    dumbo_octo, has_flashed, light, 10, 10
+                )  # TODO update shape
                 flashes += 1
             lights = np.where(dumbo_octo > 9)
             # print(f"\t{i}-{substep}: found {len(lights[0])} new lightpoints!")
             substep += 1
         # print(has_flashed)
         dumbo_octo[has_flashed == 1] = 0
-    print('solution 1:')
+    print("solution 1:")
     print(flashes)
-    
+
     i = 0
     dumbo_octo = read_input()
     # dumbo_octo = read_input("day11/input/test_input.txt")
@@ -82,20 +84,17 @@ def main():
         has_flashed = np.zeros(dumbo_octo.shape)
         while len(lights[0]) > 0:
             for light in zip(lights[0], lights[1]):
-                dumbo_octo, has_flashed = update_matrix(dumbo_octo, has_flashed, light, 10, 10) #TODO update shape                
+                dumbo_octo, has_flashed = update_matrix(
+                    dumbo_octo, has_flashed, light, 10, 10
+                )  # TODO update shape
                 flashes += 1
             lights = np.where(dumbo_octo > 9)
         dumbo_octo[has_flashed == 1] = 0
         if np.sum(has_flashed) == 100:
             break
 
-    print('solution 2:')
+    print("solution 2:")
     print(i)
-
-
-
-
-
 
 
 if __name__ == "__main__":

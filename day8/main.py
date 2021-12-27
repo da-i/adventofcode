@@ -131,7 +131,8 @@ def filter_signal_by_subsignal(signals, subsig):
             new_sig.append(sig)
         else:
             rejects.append(sig)
-    return new_sig, rejects 
+    return new_sig, rejects
+
 
 def get_zero(signal, one, nine):
     for sig in signal:
@@ -174,7 +175,7 @@ def solve(entry):
     sig_1 = get_signal_by_len(entry.signal_pattern, 2)[0]
     sig_7 = get_signal_by_len(entry.signal_pattern, 3)[0]
     sig_4 = get_signal_by_len(entry.signal_pattern, 4)[0]
-    sig_8 = 'abcdefg'
+    sig_8 = "abcdefg"
 
     pos_three, no_three = filter_signal_by_subsignal(entry.signal_pattern, sig_1)
 
@@ -193,32 +194,31 @@ def solve(entry):
     sig_5 = get_five(entry.signal_pattern, sig_1, sig_9)
 
     # ugly alpha sort, to normalize the signal
-    sig_0 = ''.join(sorted(sig_0))
-    sig_1 = ''.join(sorted(sig_1))
-    sig_2 = ''.join(sorted(sig_2))
-    sig_3 = ''.join(sorted(sig_3))
-    sig_4 = ''.join(sorted(sig_4))
-    sig_5 = ''.join(sorted(sig_5))
-    sig_6 = ''.join(sorted(sig_6))
-    sig_7 = ''.join(sorted(sig_7))
-    sig_8 = ''.join(sorted(sig_8))
-    sig_9 = ''.join(sorted(sig_9))
-
+    sig_0 = "".join(sorted(sig_0))
+    sig_1 = "".join(sorted(sig_1))
+    sig_2 = "".join(sorted(sig_2))
+    sig_3 = "".join(sorted(sig_3))
+    sig_4 = "".join(sorted(sig_4))
+    sig_5 = "".join(sorted(sig_5))
+    sig_6 = "".join(sorted(sig_6))
+    sig_7 = "".join(sorted(sig_7))
+    sig_8 = "".join(sorted(sig_8))
+    sig_9 = "".join(sorted(sig_9))
 
     translator = {
-        sig_0: '0',
-        sig_1: '1',
-        sig_2: '2',
-        sig_3: '3',
-        sig_4: '4',
-        sig_5: '5',
-        sig_6: '6',
-        sig_7: '7',
-        sig_8: '8',
-        sig_9: '9'
+        sig_0: "0",
+        sig_1: "1",
+        sig_2: "2",
+        sig_3: "3",
+        sig_4: "4",
+        sig_5: "5",
+        sig_6: "6",
+        sig_7: "7",
+        sig_8: "8",
+        sig_9: "9",
     }
-    result = [translator[''.join(sorted(x))] for x in entry.output]
-    result = int(''.join(result))
+    result = [translator["".join(sorted(x))] for x in entry.output]
+    result = int("".join(result))
     return result
 
 
@@ -241,6 +241,7 @@ def main2():
         solve_signal = solve(entry)
         solution += solve_signal
     print(solution)
+
 
 if __name__ == "__main__":
     # main1()
