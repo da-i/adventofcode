@@ -25,16 +25,19 @@ pub fn solve() {
 
     println!("Using file: {}", file_path);
 
-    match read_file_to_lines(file_path) {
-        Ok(lines) => {
-            for line in lines {
-                match line {
-                    Ok(content) => println!("{}", content),
-                    Err(e) => eprintln!("Error reading line: {}", e),
-                }
-            }
+    let lines = match read_file_to_lines(file_path) {
+        Ok(lines) => lines,
+        Err(e) => {
+            eprintln!("Error opening file: {}", e);
+            return;
         }
-        Err(e) => eprintln!("Error opening file: {}", e),
+    };
+
+    for line in lines {
+        match line {
+            Ok(l) => println!("{}", l),
+            Err(e) => eprintln!("Error reading line: {}", e),
+        }
     }
 }
 
