@@ -1,6 +1,6 @@
 
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, Lines};
+use std::io::{self, BufRead};
 
 fn read_file_to_lines(file_path: &str) -> impl Iterator<Item = io::Result<String>>{
     // Check file and propegate error with ?
