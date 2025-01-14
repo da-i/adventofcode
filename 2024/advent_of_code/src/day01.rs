@@ -72,8 +72,6 @@ pub fn solve() {
     else {
         // Count the occurance in coords2 in a hash table
         let mut counts_coords2: HashMap::<i32,i32> = HashMap::new();
-        *counts_coords2.entry(6).or_insert(0) += 1;
-        *counts_coords2.entry(6).or_insert(0) += 1;
         for coord in coords2 {
             *counts_coords2.entry(coord).or_insert(0) += 1;
         }
