@@ -1,6 +1,7 @@
 
 use std::fs::File;
 use std::io::{self, BufRead};
+use std::collections::HashMap;
 
 fn read_file_to_lines(file_path: &str) -> io::Result<impl Iterator<Item = io::Result<String>>>{
     // Check file and propegate error with ?
@@ -14,6 +15,7 @@ fn read_file_to_lines(file_path: &str) -> io::Result<impl Iterator<Item = io::Re
 
 pub fn solve() {
     let dev_mode = false; // Set this to false for final result
+    let part2 = true; // Set this to true for part 2
     println!("Solving for day 1! {}", dev_mode);
 
    
@@ -56,16 +58,34 @@ pub fn solve() {
             Err(e) => eprintln!("Error reading line: {}", e),
         }
     }
-    coords1.sort();
-    coords2.sort();
+    if !part2 {
+        coords1.sort();
+        coords2.sort();
+        
+        let sums: Vec<i32> = coords1.into_iter().zip(coords2).map(|(c1, c2)| {c1 - c2}.abs()).collect();
+        if dev_mode {println!("{:?}", sums);}
+        // consumes the sums vector
+        let sum: i32 = sums.into_iter().sum();
+        println!("Final solution for day 1 is:");
+        println!("{:?}", sum);
+    }
+    else {
+        // Count the occurance in coords2 in a hash table
+        let mut counts_coords2: HashMap::<i32,i32> = HashMap::new();
+        *counts_coords2.entry(6).or_insert(0) += 1;
+        *counts_coords2.entry(6).or_insert(0) += 1;
+        for coord in coords2 {
+            *counts_coords2.entry(coord).or_insert(0) += 1;
+        }
+        if dev_mode {println!("{:?}", counts_coords2);}
 
-    let sums: Vec<i32> = coords1.into_iter().zip(coords2).map(|(c1, c2)| {c1 - c2}.abs()).collect();
-    if dev_mode {println!("{:?}", sums);}
-    // consumes the sums vector
-    let sum: i32 = sums.into_iter().sum();
-    println!("Final solution for day 1 is:");
-    println!("{:?}", sum);
+        // multiply the values of coords1 with the occurance in coords2
+        let sum: i32 = coords1.into_iter().map(|c| c * counts_coords2.get(&c).unwrap_or(&0)).sum();
+        println!("Final solution for day 1 part 2 is:");
+        println!("{:?}", sum);
 
+    }
+   
 }
 
 #[cfg(test)]
